@@ -7,6 +7,8 @@ powerhour () {
     echo "Starting Power Hour ($NUMTRACKS tracks)"
     spotify play
     for ((i=1; i<=$NUMTRACKS; i++)); do
+        jump "$(spotify info | grep Track | awk -F\: '{print $2}')"
+
         for j in {60..1}; do
             if [ $(( $j % 10 )) -eq 0 ]; then
                 echo -n "$j, "
@@ -22,7 +24,17 @@ powerhour () {
 
 spotify () {
     CMD=$1
-    osascript "$(dirname $0)/SpotifyControl.scpt" $CMD
+    OPT=$2
+    osascript "$(dirname $0)/SpotifyControl.scpt" $CMD $OPT
+}
+
+jump () {
+    TRACK=$(echo $1 | sed -e 's/^[[:space:]]*//')
+    grep "$TRACK" jump.txt > /dev/null 2>&1
+    if [ "$?" -eq 0 ]; then
+        SECONDS=$(grep "$TRACK" jump.txt | awk -F\= '{print $2}')
+        spotify jump $SECONDS 
+    fi
 }
 
 # Default to 60 tracks
