@@ -6,3 +6,5 @@ Burning Heart=21
 Take a Walk=51
 We Are the People=62
 Get Lucky=31
+Give The People What They Want=19
+She Has A Girlfriend Now=4
