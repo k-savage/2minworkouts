@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Plays a power hour through Spotify
+# Usage: ./powerhour [length]
+
+powerhour () {
+    echo "Starting Power Hour ($NUMTRACKS tracks)"
+    echo "Playing Track #0"
+    spotify play
+    for ((i=1; i<=$NUMTRACKS; i++)); do
+        for j in {60..1}; do
+            echo -n "$j, "
+            sleep 1
+        done
+        spotify next
+        echo "Playing Track #${i}"
+    done
+    echo "You made it!"
+}
+
+spotify () {
+    cmd=$1
+    osascript "$(pwd)/SpotifyControl.scpt" $cmd
+}
+
+# Default to 60 tracks
+NUMTRACKS=60
+if [ ! -z $1 ]; then
+    NUMTRACKS=$1
+fi
+
+powerhour $NUMTRACKS
