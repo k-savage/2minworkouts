@@ -5,7 +5,6 @@
 
 powerhour () {
     echo "Starting Power Hour ($NUMTRACKS tracks)"
-    echo "Playing Track #0"
     spotify play
     for ((i=1; i<=$NUMTRACKS; i++)); do
         for j in {60..1}; do
