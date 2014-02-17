@@ -14,8 +14,9 @@ powerhour () {
             fi
             sleep 1
         done
-        spotify next
+        echo ""
         echo "Playing Track #${i}"
+        spotify next
     done
     echo "You made it!"
 }
