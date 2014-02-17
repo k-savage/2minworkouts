@@ -5,3 +5,4 @@ Fuck You=38
 Burning Heart=21
 Take a Walk=51
 We Are the People=62
+Get Lucky=31
