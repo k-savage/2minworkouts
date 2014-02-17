@@ -9,7 +9,9 @@ powerhour () {
     spotify play
     for ((i=1; i<=$NUMTRACKS; i++)); do
         for j in {60..1}; do
-            echo -n "$j, "
+            if [ $(( $j % 10 )) -eq 0 ]; then
+                echo -n "$j, "
+            fi
             sleep 1
         done
         spotify next
@@ -19,8 +21,8 @@ powerhour () {
 }
 
 spotify () {
-    cmd=$1
-    osascript "$(pwd)/SpotifyControl.scpt" $cmd
+    CMD=$1
+    osascript "$(pwd)/SpotifyControl.scpt" $CMD
 }
 
 # Default to 60 tracks
