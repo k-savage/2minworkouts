@@ -23,7 +23,7 @@ powerhour () {
 
 spotify () {
     CMD=$1
-    osascript "$(pwd)/SpotifyControl.scpt" $CMD
+    osascript "$(dirname $0)/SpotifyControl.scpt" $CMD
 }
 
 # Default to 60 tracks
