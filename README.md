@@ -1,6 +1,7 @@
 # 2minworkouts - Spotify Player
 
 Select a playlist in Spotify and then run 2minworkouts.exe
+
 Songs will play for 2.5 minute each. 
 
 
