@@ -1,15 +1,15 @@
 #!/bin/bash
 #
-# Plays a power hour through Spotify
-# Usage: ./powerhour [length]
+# Plays a 2minworkouts through Spotify
+# Usage: ./2minworkouts [length]
 
-powerhour () {
-    echo "Starting Power Hour ($NUMTRACKS tracks)"
+2minworkouts () {
+    echo "Starting Workout ($NUMTRACKS tracks)"
     spotify play
     for ((i=1; i<=$NUMTRACKS; i++)); do
         jump "$(spotify info | grep Track | awk -F\: '{print $2}')"
 
-        for j in {60..1}; do
+        for j in {120..1}; do
             if [ $(( $j % 10 )) -eq 0 ]; then
                 echo -n "$j, "
             fi
@@ -37,10 +37,10 @@ jump () {
     fi
 }
 
-# Default to 60 tracks
-NUMTRACKS=60
+# Default to 24 tracks
+NUMTRACKS=24
 if [ ! -z $1 ]; then
     NUMTRACKS=$1
 fi
 
-powerhour $NUMTRACKS
+2minworkouts $NUMTRACKS
